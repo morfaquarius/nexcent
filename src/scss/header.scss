@@ -1,0 +1,171 @@
+//====================================================================================================
+.header {
+  position: relative;
+  &__container {
+    min-height: 85px;
+    display: flex;
+    align-items: center;
+    @media (max-width: $mobile) {
+      column-gap: 20px;
+    }
+  }
+  &__logo {
+    z-index: 10;
+
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 182px;
+  }
+  &__menu {
+    flex: 1 1 auto;
+  }
+  &__auth {
+    flex-basis: 182px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    display: flex;
+    gap: 14px;
+    align-items: center;
+  }
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__icon {
+  }
+  &__body {
+    @media (max-width: $mobile) {
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      top: 0;
+      left: -100%;
+      @include adaptiveValue("padding-top", 130, 90);
+      background-color: rgb(196, 198, 200, 0.2);
+      padding-bottom: toRem(30);
+      overflow: auto;
+      & > :not(:last-child) {
+        margin-bottom: toRem(30);
+      }
+      .menu-open & {
+        left: 0;
+        &::before {
+          content: "";
+          left: 0;
+        }
+      }
+    }
+  }
+  &__list {
+    display: flex;
+    justify-content: center;
+    @include adaptiveValue("gap", 50, 20, 2, 1150, 768);
+    @media (min-width: $mobile) {
+      align-items: center;
+    }
+    @media (max-width: $mobile) {
+      flex-direction: column;
+      gap: toRem(20);
+      font-size: toRem(25);
+      padding-left: toRem(20);
+    }
+  }
+  &__item {
+  }
+  &__link {
+    color: $mainDark;
+    font-weight: 400;
+    line-height: 1.5;
+    transition: all 0.1s;
+    @include adaptiveValue("font-size", 16, 14, 2, 1150, 768);
+    @media (any-hover: hover) {
+      &:hover {
+        color: $secondaryColor;
+      }
+    }
+    @media (max-width: $mobile) {
+      position: relative;
+      padding-bottom: toRem(10);
+      &::after {
+        content: "";
+        width: 10000%;
+        height: 2px;
+        background-color: #a5a5a5;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+      }
+    }
+  }
+}
+.icon-menu {
+}
+.auth-header {
+  @media (max-width: $mobile) {
+  }
+  @media (max-width: $mobileSmall) {
+    font-size: toRem(20);
+    padding: 0 toRem(20);
+  }
+  &__login {
+  }
+  &__signup {
+  }
+}
+
+//====================================================================================================
+
+//Burger
+
+.icon-menu {
+  display: none;
+  @media (max-width: $mobile) {
+    display: block;
+    position: relative;
+    width: toRem(40);
+    height: toRem(24);
+    z-index: 5;
+    @media (any-hover: none) {
+      cursor: default;
+    }
+    span,
+    &::before,
+    &::after {
+      content: "";
+      transition: all 0.3s ease 0s;
+      right: 0;
+      position: absolute;
+      width: 100%;
+      height: toRem(4);
+      background-color: $secondaryColor;
+      border-radius: 2px;
+    }
+    &::before {
+      top: 0;
+    }
+    &::after {
+      bottom: 0;
+    }
+    span {
+      top: calc(50% - toRem(2));
+    }
+    .menu-open & {
+      span {
+        width: 0;
+      }
+      &::before,
+      &::after {
+      }
+      &::before {
+        top: calc(50% - toRem(2));
+        transform: rotate(-45deg);
+      }
+      &::after {
+        bottom: calc(50% - toRem(2));
+        transform: rotate(45deg);
+      }
+    }
+  }
+}

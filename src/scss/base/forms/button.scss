@@ -1,0 +1,32 @@
+//<BUTTONS (a.btn+tab)>
+// Сниппет (HTML): btn
+
+.button {
+  padding: toRem(10) toRem(20);
+  background-color: $secondaryColor;
+  color: #fff;
+  border-radius: 6px;
+  font-weight: 500;
+  line-height: 1.42;
+  transition: all 0.3s;
+  text-align: center;
+  @media (any-hover: hover) {
+    &:hover {
+      background-color: $mainHover;
+      color: #fff;
+    }
+  }
+  &--fw {
+    width: 100%;
+  }
+  &--transparent {
+    color: $secondaryColor;
+    background-color: #fff;
+    @media (any-hover: hover) {
+      &:hover {
+        color: $mainHover;
+        background-color: #fff;
+      }
+    }
+  }
+}
